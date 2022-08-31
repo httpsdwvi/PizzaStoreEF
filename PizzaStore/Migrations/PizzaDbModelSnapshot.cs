@@ -28,9 +28,12 @@ namespace PizzaStore.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
+                    b.Property<double>("Price")
+                        .HasColumnType("REAL");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Pizzas", (string)null);
+                    b.ToTable("Pizzas");
                 });
 #pragma warning restore 612, 618
         }

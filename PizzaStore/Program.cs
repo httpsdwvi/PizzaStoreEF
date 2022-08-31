@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Pizzas") ?? "Data Source=Pizzas.db";
 
 builder.Services.AddEndpointsApiExplorer();
+
+//Nas linhas abaixo temos a adição do BD SQLite e configurações do Swagger
 builder.Services.AddSqlite<PizzaDb>(connectionString);
 builder.Services.AddSwaggerGen(c =>
 {
@@ -22,6 +24,8 @@ app.UseSwaggerUI(c =>
    c.SwaggerEndpoint("/swagger/v1/swagger.json", "PizzaStore API V1");
 });
 
+
+//Adição das rotas
 app.MapGet("/pizzas", async (PizzaDb db) => await db.Pizzas.ToListAsync());
 
 app.MapGet("/pizza/{id}", async (PizzaDb db, int id) => await db.Pizzas.FindAsync(id));
@@ -39,7 +43,7 @@ app.MapPut("/pizza/{id}", async (PizzaDb db, Pizza updatepizza, int id) =>
     if (pizza is null) return Results.NotFound();
     pizza.Name = updatepizza.Name;
     pizza.Description = updatepizza.Description;
-    //pizza.Price = updatepizza.Price;
+    pizza.Price = updatepizza.Price;
     await db.SaveChangesAsync();
     return Results.NoContent();
 });
