@@ -10,8 +10,8 @@ builder.Services.AddSqlite<PizzaDb>(connectionString);
 builder.Services.AddSwaggerGen(c =>
 {
      c.SwaggerDoc("v1", new OpenApiInfo {
-         Title = "PizzaStore API",
-         Description = "Making the Pizzas you love",
+         Title = "PizzaStoreDonaMariza API",
+         Description = "Desenvolvendo um mundo melhor : )",
          Version = "v1" });
 });
 
@@ -21,8 +21,6 @@ app.UseSwaggerUI(c =>
 {
    c.SwaggerEndpoint("/swagger/v1/swagger.json", "PizzaStore API V1");
 });
-
-app.MapGet("/", () => "Hello World!");
 
 app.MapGet("/pizzas", async (PizzaDb db) => await db.Pizzas.ToListAsync());
 
@@ -41,6 +39,7 @@ app.MapPut("/pizza/{id}", async (PizzaDb db, Pizza updatepizza, int id) =>
     if (pizza is null) return Results.NotFound();
     pizza.Name = updatepizza.Name;
     pizza.Description = updatepizza.Description;
+    //pizza.Price = updatepizza.Price;
     await db.SaveChangesAsync();
     return Results.NoContent();
 });
