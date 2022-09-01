@@ -26,6 +26,8 @@ app.UseSwaggerUI(c =>
 
 
 //Adição das rotas
+app.MapGet("/", () => "Salve!");
+
 app.MapGet("/pizzas", async (PizzaDb db) => await db.Pizzas.ToListAsync());
 
 app.MapGet("/pizza/{id}", async (PizzaDb db, int id) => await db.Pizzas.FindAsync(id));
