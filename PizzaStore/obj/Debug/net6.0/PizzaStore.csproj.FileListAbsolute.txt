@@ -52,3 +52,6 @@ C:\Users\davio\OneDrive\Desktop\Work\Projetos\PizzaStoreEF\PizzaStore\bin\Debug\
 C:\Users\davio\OneDrive\Desktop\Work\Projetos\PizzaStoreEF\PizzaStore\bin\Debug\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\davio\OneDrive\Desktop\Work\Projetos\PizzaStoreEF\PizzaStore\bin\Debug\net6.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\davio\OneDrive\Desktop\Work\Projetos\PizzaStoreEF\PizzaStore\bin\Debug\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\davio\OneDrive\Desktop\Work\Projetos\PizzaStoreEF\PizzaStore\bin\Debug\net6.0\pizza-web\package-lock.json
+C:\Users\davio\OneDrive\Desktop\Work\Projetos\PizzaStoreEF\PizzaStore\bin\Debug\net6.0\pizza-web\package.json
+C:\Users\davio\OneDrive\Desktop\Work\Projetos\PizzaStoreEF\PizzaStore\bin\Debug\net6.0\pizza-web\public\manifest.json

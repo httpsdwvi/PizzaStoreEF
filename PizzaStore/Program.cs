@@ -2,6 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using PizzaStore.Models;
 using Microsoft.OpenApi.Models;
 
+
+const string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Pizzas") ?? "Data Source=Pizzas.db";
 
@@ -17,6 +21,15 @@ builder.Services.AddSwaggerGen(c =>
          Version = "v1" });
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+      builder =>
+      {
+          builder.WithOrigins("*");
+      });
+});
+
 var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
@@ -24,6 +37,7 @@ app.UseSwaggerUI(c =>
    c.SwaggerEndpoint("/swagger/v1/swagger.json", "PizzaStore API V1");
 });
 
+app.UseCors(MyAllowSpecificOrigins);
 
 //Adição das rotas
 app.MapGet("/", () => "Salve!");
@@ -62,4 +76,6 @@ app.MapDelete("/pizza/{id}", async (PizzaDb db, int id) =>
   return Results.Ok();
 });
 
+// 3) use the capability
+app.UseCors(MyAllowSpecificOrigins);
 app.Run();
